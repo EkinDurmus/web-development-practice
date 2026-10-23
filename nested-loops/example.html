@@ -1,0 +1,57 @@
+// Soru: 5 il, her ilde 4 ilçe ve her ilçede 3 mahalle olsun. 
+// 3 boyutlu dizi ile veri üret, konsola yazdır ve en kalabalık ili bulup ekrana yazdır.
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Nüfus Uygulaması</title>
+</head>
+<body>
+    <h2>Sonuçları görmek için sağ tıklayıp "İncele" de ve Konsol (Console) sekmesine bak!</h2>
+<script>
+    const Il_Sayisi=5;
+    const Ilce_Sayisi=4;
+    const Mahalle_Sayisi=3;
+    //3 boyutlu dizide veriyi üretme
+    const Turkiye=[];
+    for(i=0; i<Il_Sayisi; i++){
+        Turkiye[i]=[];
+        for(let j=0; j<Ilce_Sayisi; j++){
+            Turkiye[i][j]=[];
+            for(let k=0; k<Mahalle_Sayisi; k++){
+                Turkiye[i][j][k]=Math.floor(Math.random()*1000)+1;
+            }
+        }
+    }
+    //js'te önce ana array tanımlanır, ardından her adımda [] ile alt arrayler açılır.
+    //içiçe döngülerde veri gezme
+    //boyut sayısı kaçsa o kadar iç içe döngü kurmak gerekir!
+    for(let i=0; i<Il_Sayisi; i++){
+        console.log("İL-" + i);
+        for(let j=0; j<Ilce_Sayisi; j++){
+            console.log("İLÇE-" + j  + ":");
+            for(let k=0; k<Mahalle_Sayisi; k++){
+                console.log("MAHALLE-" + k + "NÜFUS:" + Turkiye[i][j][k]);
+            }
+        }
+    }
+    //en kalabalık ili bul
+    let enKalabalikIlToplam=-1;
+    let enKalabalikIlId=-1;
+    //değer karşılaştırmasının düzgün olabilmesi için -1'den aldık.
+    for(let i=0; i<Il_Sayisi; i++){
+        let ilToplam=0;
+        for(let j=0; j<Ilce_Sayisi; j++){
+            for(let k=0; k<Mahalle_Sayisi; k++){
+                ilToplam += Turkiye[i][j][k];
+            }
+        }
+        if(ilToplam>enKalabalikIlToplam){
+            enKalabalikIlToplam=ilToplam;
+            enKalabalikIlId=i;
+        }
+    }
+    console.log("En kalabalık il: " + enKalabalikIlId + "Toplam nüfus: " + enKalabalikIlToplam);
+</script>
+</body>
+</html>
