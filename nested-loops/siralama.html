@@ -1,0 +1,36 @@
+<!--random oluşturulan sayıları küçükten büyüğe doğru sıralayıp ekrana yazan kod-->
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Sıralama Örneği</title>
+</head>
+<body>
+    <h2>Sonuçları görmek için sağ tıklayıp "İncele" de ve Konsol (Console) sekmesine bak!</h2>
+
+<script>
+    let sayilar = [];
+    for(let i=0; i<10 ; i++){
+        sayilar[i]=Math.floor(Math.random()*100)+1;
+    }
+    console.log("Dizinin ilk hali: ", ...sayilar);
+    //...sayilar -> dizinin ilk halini almasını sağlar
+    //console.log("...",...) ->Etkileşimlidir, tarayıcıda üstüne tıklanabilir
+    //console.log("..." + ...) ->Etkileşimsizdir, concatenation birleştirme yapar.
+    for(let i=0; i<sayilar.length; i++){
+        for(let j=i+1; j<sayilar.length; j++){
+            if(sayilar[i]>sayilar[j]){
+                //burda swap işlemi başlar.
+                //normalde sıralamada i,j,... şeklinde ilerlemeli ama j,i şeklinde ilerliyor o yüzden
+                //yer değiştirmeliyiz ve bu işlem js'te yer tutucu ile yapılır
+                let gecici = sayilar[i];
+                sayilar[i] = sayilar[j];
+                sayilar[j] = gecici;
+            }
+        }
+    }
+    console.log("Sıralanmış dizi: ", sayilar)
+
+</script>
+</body>
+</html>
