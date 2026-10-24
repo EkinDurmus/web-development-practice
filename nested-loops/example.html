@@ -1,5 +1,5 @@
-// Soru: 5 il, her ilde 4 ilçe ve her ilçede 3 mahalle olsun. 
-// 3 boyutlu dizi ile veri üret, konsola yazdır ve en kalabalık ili bulup ekrana yazdır.
+<!--Soru: 5 il, her ilde 4 ilçe ve her ilçede 3 mahalle olsun. -->
+<!-- 3 boyutlu dizi ile veri üret, konsola yazdır ve en kalabalık ili bulup ekrana yazdır. -->
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -14,7 +14,7 @@
     const Mahalle_Sayisi=3;
     //3 boyutlu dizide veriyi üretme
     const Turkiye=[];
-    for(i=0; i<Il_Sayisi; i++){
+    for(let i=0; i<Il_Sayisi; i++){
         Turkiye[i]=[];
         for(let j=0; j<Ilce_Sayisi; j++){
             Turkiye[i][j]=[];
@@ -23,7 +23,7 @@
             }
         }
     }
-    //js'te önce ana array tanımlanır, ardından her adımda [] ile alt arrayler açılır.
+    //jste önce ana array tanımlanır, ardından her adımda [] ile alt arrayler açılır.
     //içiçe döngülerde veri gezme
     //boyut sayısı kaçsa o kadar iç içe döngü kurmak gerekir!
     for(let i=0; i<Il_Sayisi; i++){
@@ -38,10 +38,12 @@
     //en kalabalık ili bul
     let enKalabalikIlToplam=-1;
     let enKalabalikIlId=-1;
-    //değer karşılaştırmasının düzgün olabilmesi için -1'den aldık.
+    //değer karşılaştırmasının düzgün olabilmesi için -1den aldık.
     for(let i=0; i<Il_Sayisi; i++){
         let ilToplam=0;
-        for(let j=0; j<Ilce_Sayisi; j++){
+        //ilToplam=0'ı en dışa koysak diğer illerin verileri ile toplanırdı
+        //burda kullanarak bunun önüne geçip, her il için ayrı ayrı değerlerin toplanmasını sağlıyoruz
+            for(let j=0; j<Ilce_Sayisi; j++){
             for(let k=0; k<Mahalle_Sayisi; k++){
                 ilToplam += Turkiye[i][j][k];
             }
@@ -51,7 +53,7 @@
             enKalabalikIlId=i;
         }
     }
-    console.log("En kalabalık il: " + enKalabalikIlId + "Toplam nüfus: " + enKalabalikIlToplam);
+    console.log("En kalabalık il: " + enKalabalikIlId + " Toplam nüfus: " + enKalabalikIlToplam);
 </script>
 </body>
 </html>
